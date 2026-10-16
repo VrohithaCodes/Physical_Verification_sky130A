@@ -89,4 +89,15 @@ Launch Magic: Open Magic loaded with the Sky130 technology file (magic -T sky130
 
 Paint Layers: Select the appropriate layout layers (such as ndiff, pdiff, poly, metal1) and paint the transistors and routing wires inside the interactive grid.
 
-
+### 3 Netgen
+Netgen compares these two netlists to ensure they match identically in terms of devices, sizing, and node connectivity before sending your design for fabrication.Core Functions & FeaturesLayout Versus Schematic (LVS): Compares schematic and layout netlists to catch missing connections, short circuits, or incorrect transistor sizing.Hierarchical Comparison: Can compare flattened or deeply nested hierarchical circuits efficiently.Device Property Verification: Checks parameters like transistor width ($W$) and length ($L$) to ensure they match between the schematic and layout.Blackboxing: Allows designers to mask out complex pre-existing cells (like standard cell libraries or pad frames) during comparison.Commands to Launch Netgen1. Interactive ModeTo launch Netgen into an interactive Tcl shell: netgen
+2. Batch Mode LVS (Most Common)
+Instead of opening the interactive GUI, designers typically run LVS directly from the terminal in batch mode to quickly check if circuits match: netgen -batch lvs "schematic_netlist.spice cell_name" "layout_netlist.spice cell_name" setup_file.tcl
+**Basic LVS Workflow & Execution Example***
+To verify a CMOS inverter layout against its schematic using Netgen:
+1.Generate Schematic Netlist: Export your netlist from Xschem (e.g., inverter.spice).
+2.Extract Layout Netlist: Run extraction commands inside Magic to generate the layout netlist (e.g., inverter_layout.spice).
+3.Run Netgen LVS Command: Execute the batch comparison script in your terminal using the Sky130 setup file: 
+netgen -batch lvs "inverter.spice inverter" "inverter_layout.spice inverter" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl lvs_result.log
+4.Check the Output: Open the log file or look at the terminal summary. If everything is correct, you will see:
+Result: Circuits match uniquely.

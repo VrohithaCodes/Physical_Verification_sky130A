@@ -33,8 +33,11 @@ This repository contains lab documentation, schematics, simulations, and layouts
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/df505509-2d60-4e02-9eff-3f33f354e7ea" />
 
 ### Basic Workflow: From Schematic to SimulationOpen Xschem: 
-1.Run xschem in your working folder.2.
-Place Components: Press Shift + i to add transistors (e.g., sky130_fd_pr__nfet_01v8 and sky130_fd_pr__pfet_01v8), power sources (vdd), ground (gnd), and input/output pins (ipin, opin).Connect Wires: 3.
-Press w to route wires between terminal pins.4.
-Set Attributes: Press q on transistors to set width ($W$) and length ($L$).5.
-Generate Netlist: Click Netlist in the top-right toolbar or select Options $\rightarrow$ Generate Netlist.Run Simulation: Click Simulate to pass the exported netlist directly into Ngspice.
+1.Run xschem in your working folder.
+2.Place Components: Press Shift + i to add transistors (e.g., sky130_fd_pr__nfet_01v8 and sky130_fd_pr__pfet_01v8), power sources (vdd), ground (gnd), and input/output pins (ipin, opin).
+3.Connect Wires: Press w to route wires between terminal pins.
+4.Set Attributes: Press q on transistors to set width ($W$) and length ($L$).
+5.Generate Netlist: Click Netlist in the top-right toolbar or select Options $\rightarrow$ Generate Netlist.
+6.Run Simulation: Click Simulate to pass the exported netlist directly into Ngspice.
+
+### 1. Xschem

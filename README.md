@@ -82,3 +82,5 @@ Commands to Launch Magic
 To launch Magic using the default technology setup: magic
 magic -T sky130A
 magic -T sky130A inverter.mag
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0f3849ea-e4d5-4360-ac87-4f19945854af" />
+

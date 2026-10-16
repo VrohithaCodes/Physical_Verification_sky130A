@@ -41,3 +41,26 @@ This repository contains lab documentation, schematics, simulations, and layouts
 6.Run Simulation: Click Simulate to pass the exported netlist directly into Ngspice.
 
 ### 1. Xschem
+
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/56d07b9d-0b5b-42cf-b4ea-c62e163903b9" />
+Xschem: Comprehensive Overview & Usage Guide
+Xschem is an open-source, hierarchical schematic capture tool designed for Very Large Scale Integration (VLSI) and analog/digital circuit design. It acts as the front-end graphical interface where you draw your circuit diagrams (such as CMOS inverters, basic logic gates, or complex operational amplifiers) and export them into SPICE netlists for simulation.
+
+Core Functions & Features
+Hierarchical Schematic Capture: Allows you to create reusable sub-circuits (symbols) and instantiate them inside larger designs.
+
+SPICE Netlist Generation: Automatically translates graphical symbols, pins, and wire connections into SPICE netlists (.spice or .cir files) compatible with simulators like Ngspice.
+
+PDK Integration: Seamlessly integrates with open-source Process Design Kits (PDKs) like the SkyWater 130nm (sky130) and GlobalFoundries 180nm (gf180mcu).
+
+Symbol Creation: Enables custom symbol creation (.sym files) with defined pins, properties, and parameters.
+
+Commands to Launch Xschem
+1. Standard Launch Command
+To launch Xschem with default global configurations from any terminal window:
+xschem
+
+xschem inverter.sch
+xschem -rcfile $PDK_ROOT/sky130A/libs.tech/xschem/xschemrc inverter.sch
+
+

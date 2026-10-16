@@ -84,3 +84,9 @@ magic -T sky130A
 magic -T sky130A inverter.mag
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0f3849ea-e4d5-4360-ac87-4f19945854af" />
 
+Basic Layout & Verification Workflow
+Launch Magic: Open Magic loaded with the Sky130 technology file (magic -T sky130A).
+
+Paint Layers: Select the appropriate layout layers (such as ndiff, pdiff, poly, metal1) and paint the transistors and routing wires inside the interactive grid.
+
+

@@ -63,4 +63,22 @@ xschem
 xschem inverter.sch
 xschem -rcfile $PDK_ROOT/sky130A/libs.tech/xschem/xschemrc inverter.sch
 
+### 2. Magic
+Magic is a legendary, open-source interactive layout editor used for Very Large Scale Integration (VLSI) design. It is designed to handle physical mask geometry creation, allowing circuit designers to translate schematic diagrams into physical layouts (polygons representing metal layers, polysilicon, diffusion, and contacts) that can be sent to a semiconductor foundry for chip fabrication.
 
+Core Functions & Features
+Interactive Layout Editing: Provides a graphical environment to draw, stretch, paint, and modify geometrical shapes representing physical layout layers.
+
+Built-In Design Rule Checking (DRC): Magic performs incremental DRC in real time as you draw. If you violate manufacturing rules (such as wire spacing or minimum width), error highlights and diagnostic feedback appear immediately.
+
+Parasitic Extraction (EXT): Extracts parasitic resistances and capacitances from the physical layout into standard netlist formats (SPICE or SPEF) to run post-layout simulations.
+
+CIF/GDSII Export: Generates standard foundry-ready files (.gds or .cif) required for tape-out and fabrication.
+
+PDK Support: Fully integrated with modern open-source PDKs like SkyWater 130nm (sky130) via technology files (sky130A.tech).
+
+Commands to Launch Magic
+1. Standard Launch Command
+To launch Magic using the default technology setup: magic
+magic -T sky130A
+magic -T sky130A inverter.mag

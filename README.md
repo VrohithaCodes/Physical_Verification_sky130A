@@ -1,120 +1,234 @@
 # Open-Source VLSI EDA Toolchain Documentation
 
-This repository contains lab documentation, schematics, simulations, and layouts built using the open-source Electronic Design Automation (EDA) toolchain. 
+This repository contains lab documentation, schematics, simulations, and layouts built using the open-source Electronic Design Automation (EDA) toolchain.
 
-## Software Toolchain Overview
+It walks through the complete flow of a small CMOS design (for example, an inverter) using the SkyWater 130nm (sky130) PDK: schematic capture, simulation, layout, design rule checking, parasitic extraction, layout versus schematic (LVS) verification, and post-layout simulation.
 
-### 1. Xschem
-* **Definition:** A hierarchical schematic capture program that allows designers to draw electronic circuits (like CMOS gates) and generate SPICE netlists for simulation.
-* **Latest Version:** v3.4.8
-* **Launch Command:**
-  ```bash
-  xschem
-### 2. Ngspice
-**Definition:** An open-source mixed-level, mixed-signal electronic circuit simulator based on Berkeley SPICE 3f5. It is used to perform DC, AC, and transient analyses on netlists.
+## Index
+* [Chapter 0 - Software Toolchain Overview](#chapter-0---software-toolchain-overview)
+* [Chapter 1 - Getting the Tools](#chapter-1---getting-the-tools)
+* [Chapter 2 - Xschem](#chapter-2---xschem)
+* [Chapter 3 - Magic](#chapter-3---magic)
+* [Chapter 4 - Netgen](#chapter-4---netgen)
+* [Chapter 5 - Verification Workflow (DRC, EXT, LVS, Post-Layout Simulation)](#chapter-5---verification-workflow)
 
-**Latest Version:** Ngspice-47
+## Chapter 0 - Software Toolchain Overview
 
-**Execution/Simulation Command:** ngspice schematic.spice
-### 3. Magic
-**Definition:** An interactive layout editor used for Very Large Scale Integration (VLSI) layout design. It handles physical mask geometry creation and built-in Design Rule Checking (DRC).
+![toolchain](https://github.com/user-attachments/assets/df505509-2d60-4e02-9eff-3f33f354e7ea)
 
-**Latest Version:** Magic-8.3
+| Tool | Purpose | Latest Version | Command |
+|------|---------|----------------|---------|
+| **Xschem** | Hierarchical schematic capture; generates SPICE netlists for simulation | v3.4.8 | `xschem` |
+| **Ngspice** | Mixed-level, mixed-signal circuit simulator based on Berkeley SPICE 3f5; performs DC, AC and transient analyses | Ngspice-47 | `ngspice schematic.spice` |
+| **Magic** | Interactive VLSI layout editor with built-in DRC and parasitic extraction | Magic-8.3 | `magic -T sky130A` |
+| **Netgen** | Netlist comparison tool used for LVS verification | Compatible with Magic / Open_PDKs (v1.5+) | `netgen -batch lvs "schematic.spice cell_name" "layout.spice cell_name"` |
 
-**Launch Command:** magic -T sky130A
+### Basic Workflow: From Schematic to Simulation
+1. **Open Xschem:** Run `xschem` in your working folder.
+2. **Place Components:** Press `Shift + i` to add transistors (e.g., `sky130_fd_pr__nfet_01v8` and `sky130_fd_pr__pfet_01v8`), power sources (`vdd`), ground (`gnd`), and input/output pins (`ipin`, `opin`).
+3. **Connect Wires:** Press `w` to route wires between terminal pins.
+4. **Set Attributes:** Press `q` on transistors to set width ($W$) and length ($L$).
+5. **Generate Netlist:** Click **Netlist** in the top-right toolbar or select **Options → Generate Netlist**.
+6. **Run Simulation:** Click **Simulate** to pass the exported netlist directly into Ngspice.
 
-### 4. Netgen
-**Definition:** A tool for comparing netlists, commonly used for Layout Versus Schematic (LVS) verification to ensure that the physical layout matches the original circuit schematic.
+## Chapter 1 - Getting the Tools
 
-**Latest Version:** Compatible with Magic / Open_PDKs tool suite (v1.5+)
+To use the open-source SkyWater 130nm PDK and follow this flow, the following tools need to be installed:
+- magic
+- netgen
+- xschem
+- ngspice
+- open_pdks
 
-**Execution Command** (LVS Batch mode):netgen -batch lvs "schematic.spice cell_name" "layout.spice cell_name"
+*Note: open_pdks has to be installed last so it can correctly associate the xschem and magic directories.*
+*Note: if the configure step fails during any process, it is most likely due to missing additional packages, which need to be installed (preferably from source) to complete the installation.*
 
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/df505509-2d60-4e02-9eff-3f33f354e7ea" />
+### Magic
+```
+$ git clone git://opencircuitdesign.com/magic
+$ cd magic
+$ ./configure
+$ make
+$ sudo make install
+```
+More info: [http://opencircuitdesign.com/magic/index.html](http://opencircuitdesign.com/magic/index.html)
 
-### Basic Workflow: From Schematic to SimulationOpen Xschem: 
-1.Run xschem in your working folder.
-2.Place Components: Press Shift + i to add transistors (e.g., sky130_fd_pr__nfet_01v8 and sky130_fd_pr__pfet_01v8), power sources (vdd), ground (gnd), and input/output pins (ipin, opin).
-3.Connect Wires: Press w to route wires between terminal pins.
-4.Set Attributes: Press q on transistors to set width ($W$) and length ($L$).
-5.Generate Netlist: Click Netlist in the top-right toolbar or select Options $\rightarrow$ Generate Netlist.
-6.Run Simulation: Click Simulate to pass the exported netlist directly into Ngspice.
+### Netgen
+```
+$ git clone git://opencircuitdesign.com/netgen
+$ cd netgen
+$ ./configure
+$ make
+$ sudo make install
+```
+More info: [http://opencircuitdesign.com/netgen/index.html](http://opencircuitdesign.com/netgen/index.html)
 
-### 1. Xschem
+### Xschem
+```
+$ git clone https://github.com/StefanSchippers/xschem.git xschem_git
+$ cd xschem_git
+$ ./configure
+$ make
+$ sudo make install
+```
+More info: [http://repo.hu/projects/xschem/index.html](http://repo.hu/projects/xschem/index.html)
 
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/56d07b9d-0b5b-42cf-b4ea-c62e163903b9" />
-Xschem: Comprehensive Overview & Usage Guide
-Xschem is an open-source, hierarchical schematic capture tool designed for Very Large Scale Integration (VLSI) and analog/digital circuit design. It acts as the front-end graphical interface where you draw your circuit diagrams (such as CMOS inverters, basic logic gates, or complex operational amplifiers) and export them into SPICE netlists for simulation.
+### Ngspice
+After downloading the tarball from [https://sourceforge.net/projects/ngspice/files/](https://sourceforge.net/projects/ngspice/files/), unpack and build it (replace the version number with the one you downloaded):
+```
+$ tar -zxvf ngspice-47.tar.gz
+$ cd ngspice-47
+$ mkdir release
+$ cd release
+$ ../configure --with-x --with-readline=yes --disable-debug
+$ make
+$ sudo make install
+```
+To view simulation graphs, `xterm` is required:
+```
+$ sudo apt-get update
+$ sudo apt-get install xterm
+```
+More info: [https://ngspice.sourceforge.io/index.html](https://ngspice.sourceforge.io/index.html)
 
-Core Functions & Features
-Hierarchical Schematic Capture: Allows you to create reusable sub-circuits (symbols) and instantiate them inside larger designs.
+### open_pdks
+Open_PDKs supports the Google/SkyWater sky130 process and sets up an environment for using it with open-source EDA tools such as Magic, Netgen, Xschem, OpenLane and KLayout.
+```
+$ git clone git://opencircuitdesign.com/open_pdks
+$ cd open_pdks
+$ ./configure --enable-sky130-pdk
+$ make
+$ sudo make install
+```
 
-SPICE Netlist Generation: Automatically translates graphical symbols, pins, and wire connections into SPICE netlists (.spice or .cir files) compatible with simulators like Ngspice.
+## Chapter 2 - Xschem
 
-PDK Integration: Seamlessly integrates with open-source Process Design Kits (PDKs) like the SkyWater 130nm (sky130) and GlobalFoundries 180nm (gf180mcu).
+![xschem](https://github.com/user-attachments/assets/56d07b9d-0b5b-42cf-b4ea-c62e163903b9)
 
-Symbol Creation: Enables custom symbol creation (.sym files) with defined pins, properties, and parameters.
+Xschem is an open-source, hierarchical schematic capture tool designed for VLSI and analog/digital circuit design. It acts as the graphical front-end where you draw circuits (such as CMOS inverters, basic logic gates, or operational amplifiers) and export them as SPICE netlists for simulation.
 
-Commands to Launch Xschem
-1. Standard Launch Command
-To launch Xschem with default global configurations from any terminal window:
-xschem
+### Core Functions & Features
+- **Hierarchical Schematic Capture:** Create reusable sub-circuits (symbols) and instantiate them inside larger designs.
+- **SPICE Netlist Generation:** Automatically translates symbols, pins and wires into SPICE netlists (`.spice` or `.cir`) compatible with simulators like Ngspice.
+- **PDK Integration:** Integrates with open-source PDKs such as SkyWater 130nm (sky130) and GlobalFoundries 180nm (gf180mcu).
+- **Symbol Creation:** Custom symbols (`.sym` files) with defined pins, properties and parameters.
 
-xschem inverter.sch
-xschem -rcfile $PDK_ROOT/sky130A/libs.tech/xschem/xschemrc inverter.sch
+### Launching Xschem
+Standard launch with default global configuration:
+```
+$ xschem
+```
+Open an existing schematic:
+```
+$ xschem inverter.sch
+```
+Launch with the sky130 configuration:
+```
+$ xschem -rcfile $PDK_ROOT/sky130A/libs.tech/xschem/xschemrc inverter.sch
+```
 
-### 2. Magic
-Magic is a legendary, open-source interactive layout editor used for Very Large Scale Integration (VLSI) design. It is designed to handle physical mask geometry creation, allowing circuit designers to translate schematic diagrams into physical layouts (polygons representing metal layers, polysilicon, diffusion, and contacts) that can be sent to a semiconductor foundry for chip fabrication.
+## Chapter 3 - Magic
 
-Core Functions & Features
-Interactive Layout Editing: Provides a graphical environment to draw, stretch, paint, and modify geometrical shapes representing physical layout layers.
+![magic](https://github.com/user-attachments/assets/0f3849ea-e4d5-4360-ac87-4f19945854af)
 
-Built-In Design Rule Checking (DRC): Magic performs incremental DRC in real time as you draw. If you violate manufacturing rules (such as wire spacing or minimum width), error highlights and diagnostic feedback appear immediately.
+Magic is an open-source interactive layout editor for VLSI design. It handles physical mask geometry creation, letting designers translate schematics into layouts (polygons representing metal, polysilicon, diffusion and contacts) that can be sent to a foundry for fabrication.
 
-Parasitic Extraction (EXT): Extracts parasitic resistances and capacitances from the physical layout into standard netlist formats (SPICE or SPEF) to run post-layout simulations.
+### Core Functions & Features
+- **Interactive Layout Editing:** Draw, stretch, paint and modify geometric shapes representing physical layout layers.
+- **Built-In Design Rule Checking (DRC):** Incremental DRC runs in real time as you draw. Violations of rules such as minimum width or spacing are highlighted immediately with diagnostic feedback.
+- **Parasitic Extraction (EXT):** Extracts parasitic resistances and capacitances from the layout into SPICE or SPEF netlists for post-layout simulation.
+- **CIF/GDSII Export:** Generates foundry-ready files (`.gds` or `.cif`) required for tape-out.
+- **PDK Support:** Fully integrated with open-source PDKs such as sky130 through technology files (`sky130A.tech`).
 
-CIF/GDSII Export: Generates standard foundry-ready files (.gds or .cif) required for tape-out and fabrication.
+### Launching Magic
+Default technology setup:
+```
+$ magic
+```
+With the sky130 technology file:
+```
+$ magic -T sky130A
+```
+Open an existing layout:
+```
+$ magic -T sky130A inverter.mag
+```
 
-PDK Support: Fully integrated with modern open-source PDKs like SkyWater 130nm (sky130) via technology files (sky130A.tech).
+### Basic Layout Workflow
+1. **Launch Magic** with the sky130 technology file (`magic -T sky130A`).
+2. **Paint Layers:** Select the appropriate layers (`ndiff`, `pdiff`, `poly`, `metal1`, ...) and paint the transistors and routing wires on the interactive grid.
 
-Commands to Launch Magic
-1. Standard Launch Command
-To launch Magic using the default technology setup: magic
-magic -T sky130A
-magic -T sky130A inverter.mag
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0f3849ea-e4d5-4360-ac87-4f19945854af" />
+## Chapter 4 - Netgen
 
-Basic Layout & Verification Workflow
-Launch Magic: Open Magic loaded with the Sky130 technology file (magic -T sky130A).
+Netgen compares two netlists to ensure they match in terms of devices, sizing and node connectivity before the design is sent for fabrication.
 
-Paint Layers: Select the appropriate layout layers (such as ndiff, pdiff, poly, metal1) and paint the transistors and routing wires inside the interactive grid.
+### Core Functions & Features
+- **Layout Versus Schematic (LVS):** Compares schematic and layout netlists to catch missing connections, short circuits or incorrect transistor sizing.
+- **Hierarchical Comparison:** Compares flattened or deeply nested hierarchical circuits efficiently.
+- **Device Property Verification:** Checks parameters such as transistor width ($W$) and length ($L$) between schematic and layout.
+- **Blackboxing:** Masks out complex pre-existing cells (standard cell libraries, pad frames) during comparison.
 
-### 3 Netgen
-Netgen compares these two netlists to ensure they match identically in terms of devices, sizing, and node connectivity before sending your design for fabrication.Core Functions & FeaturesLayout Versus Schematic (LVS): Compares schematic and layout netlists to catch missing connections, short circuits, or incorrect transistor sizing.Hierarchical Comparison: Can compare flattened or deeply nested hierarchical circuits efficiently.Device Property Verification: Checks parameters like transistor width ($W$) and length ($L$) to ensure they match between the schematic and layout.Blackboxing: Allows designers to mask out complex pre-existing cells (like standard cell libraries or pad frames) during comparison.Commands to Launch Netgen1. Interactive ModeTo launch Netgen into an interactive Tcl shell: netgen
-2. Batch Mode LVS (Most Common)
-Instead of opening the interactive GUI, designers typically run LVS directly from the terminal in batch mode to quickly check if circuits match: netgen -batch lvs "schematic_netlist.spice cell_name" "layout_netlist.spice cell_name" setup_file.tcl
-**Basic LVS Workflow & Execution Example***
-To verify a CMOS inverter layout against its schematic using Netgen:
-1.Generate Schematic Netlist: Export your netlist from Xschem (e.g., inverter.spice).
-2.Extract Layout Netlist: Run extraction commands inside Magic to generate the layout netlist (e.g., inverter_layout.spice).
-3.Run Netgen LVS Command: Execute the batch comparison script in your terminal using the Sky130 setup file: 
-netgen -batch lvs "inverter.spice inverter" "inverter_layout.spice inverter" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl lvs_result.log
-4.Check the Output: Open the log file or look at the terminal summary. If everything is correct, you will see:
+### Launching Netgen
+Interactive mode (Tcl shell):
+```
+$ netgen
+```
+Batch mode LVS (most common):
+```
+$ netgen -batch lvs "schematic_netlist.spice cell_name" "layout_netlist.spice cell_name" setup_file.tcl
+```
+
+### Basic LVS Workflow: CMOS Inverter Example
+1. **Generate the schematic netlist:** Export from Xschem (e.g., `inverter.spice`).
+2. **Extract the layout netlist:** Run the extraction commands inside Magic (e.g., `inverter_layout.spice`).
+3. **Run Netgen LVS** using the sky130 setup file:
+   ```
+   $ netgen -batch lvs "inverter.spice inverter" "inverter_layout.spice inverter" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl lvs_result.log
+   ```
+4. **Check the output:** Open the log file or terminal summary. If everything is correct you will see:
+   ```
+   Result: Circuits match uniquely.
+   ```
+
+## Chapter 5 - Verification Workflow
+
+### 1. Design Rule Checking (DRC) — Magic
+Check that the layout complies with the foundry's manufacturing constraints (e.g., SkyWater 130nm rules), ensuring features are not too close, too thin or too wide.
+
+**Command:**
+```
+% drc check
+```
+**Verify success:** Run `drc why` or check the Magic console to confirm that there are **0 DRC errors**.
+
+### 2. Layout Parasitic Extraction (EXT) — Magic
+Extract the physical geometry into a netlist containing device connections and the parasitic capacitances/resistances of the wires.
+
+**Commands:**
+```
+% extract all
+% ext2spice lvs
+% ext2spice
+```
+**Verify success:** The layout SPICE netlist (e.g., `inverter.spice` or `inverter_layout.spice`) appears in your working directory.
+
+### 3. Layout Versus Schematic (LVS) — Netgen
+Compare the netlist extracted from the layout against the original Xschem schematic netlist to verify that transistors, pins and node connections match.
+
+**Command:**
+```
+$ netgen -batch lvs "schematic.spice cell" "layout.spice cell" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl lvs.log
+```
+**Verify success:** `lvs.log` (or the terminal summary) ends with:
+```
 Result: Circuits match uniquely.
+```
 
+### 4. Post-Layout (Parasitic) Simulation — Ngspice
+Simulate the extracted netlist (which now includes interconnect parasitics) to see how real-world resistance and capacitance affect propagation delay and switching speed.
 
-1.Design Rule Checking (DRC):Magic.Check whether your physical layout complies with the manufacturing constraints of the fabrication foundry (such as the SkyWater 130nm rules), ensuring features aren't too close, too thin, or too wide.Command: drc check (or view them interactively in Magic).How to verify success: Run drc what or check the Magic console window to confirm that the error count reads 0 errors found.
-
-
-2.Layout Parasitic Extraction (EXT):Magic.Extract the physical geometry from your layout and convert it into a netlist containing both the device connections and the parasitic capacitances/resistances caused by wires.Commands:Plaintextextract all
-ext2spice lvs
-ext2spice
-How to verify success: Check your working directory for the newly generated layout SPICE netlist file (e.g., inverter.spice or inverter_layout.spice).
-
-
-3.Layout Versus Schematic (LVS):Netgen.Compare the netlist extracted from your physical layout against the original schematic netlist from Xschem to verify that transistors, pins, and node connections match identically.Command:Bashnetgen -batch lvs "schematic.spice cell" "layout.spice cell" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl lvs.log
-How to verify success: Open the lvs.log file or look at the terminal summary to confirm the final message states: Result: Circuits match uniquely.
-
-
-4.Post-Layout (Parasitic) Simulation:Ngspice.Run a simulation on the extracted layout netlist (which now includes interconnect parasitics) to check how real-world resistance and capacitance affect signal propagation and switching speed.Command:Bashngspice inverter_layout.spice
-How to verify success: Plot the transient waveform and verify that the circuit still functions correctly and meets your timing margins (with only minor, acceptable increases in propagation delay compared to the pre-layout simulation).
+**Command:**
+```
+$ ngspice inverter_layout.spice
+```
+**Verify success:** Plot the transient waveform and confirm the circuit still functions correctly and meets timing margins, with only a minor, acceptable increase in propagation delay compared with the pre-layout simulation.

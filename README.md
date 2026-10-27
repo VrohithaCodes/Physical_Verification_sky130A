@@ -55,6 +55,28 @@ The testbench was configured for transient analysis to observe the relationship 
 
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/ccf881fc-a766-4f2f-b55c-2626088cdd24" />
 
+##  Physical Layout Design Using Magic VLSI
+
+###  Opening Magic VLSI
+
+Magic VLSI was opened in the Linux virtual machine with the SKY130A technology configuration. The tool was used to inspect and work with the physical layout of the CMOS inverter.
+
+### CMOS Inverter Layout
+
+The CMOS inverter layout was created and viewed using Magic VLSI. The layout includes the PMOS and NMOS transistor regions, interconnections, and the labelled terminals required for circuit connectivity.
+
+The input (`IN`) and output (`OUT`) terminals are labelled to represent the signal connections. The power (`VDD`) and ground (`VSS`) terminals provide the supply connections for the inverter.
+
+###  Design Rule Check (DRC)
+
+The Magic VLSI window displayed `DRC=0` in the captured screenshot. This indicates the status shown in the layout window at the time of capture. The complete DRC verification procedure and its final results will be documented after validation.
+
+### Screenshot: CMOS Inverter Layout
+
+
+
+
+
 
 ## Next Steps
 

@@ -40,7 +40,8 @@ Screenshot from the Xschem environment while setting up the project.
 
 The layout view shows the inverter layout with input, output, VDD, and VSS labels. The Magic window displays `DRC=0` in this screenshot; this records the displayed status at the time of capture and is not a substitute for documenting the full verification flow.
 
-![Magic inverter layout](images/magic_inverter_layout.jpeg)
+<img width="2880" height="1574" alt="image" src="https://github.com/user-attachments/assets/0486d3b2-05ca-4f46-b649-e1d404b20f3f" />
+
 
 ### 4. Ngspice troubleshooting
 

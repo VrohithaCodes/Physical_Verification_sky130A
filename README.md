@@ -139,7 +139,7 @@ After generating the spice we move to magic part
 
 ## Chapter 3 - Magic
 
-![magic](https://github.com/user-attachments/assets/0f3849ea-e4d5-4360-ac87-4f19945854af)
+<img width="2880" height="1574" alt="image" src="https://github.com/user-attachments/assets/90e819de-1e6a-47c5-bfe9-c38f3d03b70d" />
 
 Magic is an open-source interactive layout editor for VLSI design. It handles physical mask geometry creation, letting designers translate schematics into layouts (polygons representing metal, polysilicon, diffusion and contacts) that can be sent to a foundry for fabrication.
 

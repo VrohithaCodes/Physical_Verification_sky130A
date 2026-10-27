@@ -73,6 +73,7 @@ The Magic VLSI window displayed `DRC=0` in the captured screenshot. This indicat
 
 ### Screenshot: CMOS Inverter Layout
 
+<img width="2880" height="1574" alt="image" src="https://github.com/user-attachments/assets/8738779b-8782-4ba0-b94a-bf3b0ffde39a" />
 
 
 

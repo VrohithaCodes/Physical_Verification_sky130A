@@ -36,6 +36,7 @@ Xschem was launched in the Linux virtual machine using the SKY130A PDK configura
 ### Designing the CMOS Inverter Schematic
 
 The CMOS inverter schematic was created in Xschem using the SKY130A technology. The design represents the basic inverter structure, which produces an output complementary to the input signal.
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/a3057484-be0f-4c8d-93f6-09908d89da9a" />
 
 ### Generating the Inverter Symbol
 

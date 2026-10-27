@@ -125,6 +125,16 @@ $ xschem inverter.sch
 Launch with the sky130 configuration:
 ```
 $ xschem -rcfile $PDK_ROOT/sky130A/libs.tech/xschem/xschemrc inverter.sch
+
+##Generating the symbol for xschem
+<img width="1280" height="800" alt="symbol" src="https://github.com/user-attachments/assets/f040f7a3-b6bb-4289-8c59-41fdc924ad02" />
+
+** After generating symbol simulating the testbench cricuit
+<img width="1280" height="800" alt="testbench" src="https://github.com/user-attachments/assets/8239bba0-9fc4-40e4-97df-8216ad1251fa" />
+
+## Generating spice for the xschem
+<img width="1280" height="800" alt="spice" src="https://github.com/user-attachments/assets/d2d36a9c-025a-4ea7-9c89-c64b88908781" />
+After generating the spice we move to magic part
 ```
 
 ## Chapter 3 - Magic

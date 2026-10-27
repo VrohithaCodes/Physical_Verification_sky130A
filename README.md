@@ -26,12 +26,12 @@ A CMOS inverter is a basic digital circuit that produces the logical complement 
 
 ### 1. Xschem 
 
-The testbench includes an input source, supply source, inverter symbol, and simulation directives.
-Xschem Schematic Design and Testbench Setup
+
 
 ### Opening Xschem
 
 Xschem was launched in the Linux virtual machine using the SKY130A PDK configuration. The environment was configured to access the required technology libraries and schematic symbols.
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/acaa2c7d-eeae-4e9d-a837-3fb6b0082041" />
 
 ### Designing the CMOS Inverter Schematic
 

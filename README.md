@@ -24,41 +24,33 @@ A CMOS inverter is a basic digital circuit that produces the logical complement 
 
 ## Screenshots
 
-### 1. Xschem inverter testbench
+### 1. Xschem 
 
 The testbench includes an input source, supply source, inverter symbol, and simulation directives.
+Xschem Schematic Design and Testbench Setup
 
-![Xschem inverter testbench](images/xschem_testbench.png)
+### Opening Xschem
 
-### 2. Xschem / simulation setup
+Xschem was launched in the Linux virtual machine using the SKY130A PDK configuration. The environment was configured to access the required technology libraries and schematic symbols.
 
-Screenshot from the Xschem environment while setting up the project.
+### Designing the CMOS Inverter Schematic
 
-![Xschem setup](images/xschem_setup.png)
+The CMOS inverter schematic was created in Xschem using the SKY130A technology. The design represents the basic inverter structure, which produces an output complementary to the input signal.
 
-### 3. Magic CMOS inverter layout
+### Generating the Inverter Symbol
 
-The layout view shows the inverter layout with input, output, VDD, and VSS labels. The Magic window displays `DRC=0` in this screenshot; this records the displayed status at the time of capture and is not a substitute for documenting the full verification flow.
+After creating the inverter schematic, a reusable symbol was generated for use in higher-level circuit designs. This symbol provides a convenient interface for connecting the inverter to external input, output, power, and ground signals.
 
-<img width="2880" height="1574" alt="image" src="https://github.com/user-attachments/assets/0486d3b2-05ca-4f46-b649-e1d404b20f3f" />
+### Creating the Testbench
+
+A separate Xschem testbench was prepared to evaluate the inverter circuit. It includes the inverter symbol, an input pulse source, a supply voltage source, and simulation control directives.
+
+The testbench was configured for transient analysis to observe the relationship between the input and output signals. Simulation troubleshooting is still in progress, and verified waveform results will be added after the setup issues are resolved.
 
 
-### 4. Ngspice troubleshooting
+ 
 
-Ngspice was invoked, but the current attempt stopped with netlist/model-parameter errors. Simulation troubleshooting is still in progress.
 
-![Ngspice error output](images/ngspice_error.png)
-
-## Current Status
-
-| Stage | Status |
-|---|---|
-| Xschem schematic / testbench | Worked on |
-| SKY130A PDK setup | Configured for Xschem |
-| Magic layout | Layout screenshot captured |
-| Magic DRC | `DRC=0` displayed in the captured window |
-| Ngspice simulation | Attempted; errors remain |
-| Netgen LVS | Not completed yet |
 
 ## Next Steps
 
@@ -67,6 +59,4 @@ Ngspice was invoked, but the current attempt stopped with netlist/model-paramete
 - Run and document the complete Magic DRC check.
 - Perform Netgen LVS and add the results after completing the comparison.
 
-## Notes
 
-This README reflects the current progress only. Results for simulation and LVS will be added after they have been successfully completed and verified.

@@ -41,6 +41,8 @@ The CMOS inverter schematic was created in Xschem using the SKY130A technology. 
 ### Generating the Inverter Symbol
 
 After creating the inverter schematic, a reusable symbol was generated for use in higher-level circuit designs. This symbol provides a convenient interface for connecting the inverter to external input, output, power, and ground signals.
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/2038d0c6-858f-48ab-9261-d8822cfeff34" />
+
 
 ### Creating the Testbench
 

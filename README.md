@@ -71,9 +71,9 @@ The input (`IN`) and output (`OUT`) terminals are labelled to represent the sign
 
 The Magic VLSI window displayed `DRC=0` in the captured screenshot. This indicates the status shown in the layout window at the time of capture. The complete DRC verification procedure and its final results will be documented after validation.
 
-### Screenshot: CMOS Inverter Layout
 
-<img width="1440" height="762" alt="image" src="https://github.com/user-attachments/assets/772623dc-6e2d-4338-a003-45dcb299f585" />
+
+
 
 
 

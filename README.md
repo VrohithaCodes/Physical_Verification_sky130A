@@ -54,11 +54,12 @@ The testbench was configured for transient analysis to observe the relationship 
  
 
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/ccf881fc-a766-4f2f-b55c-2626088cdd24" />
-### checking simulation
+### ngspice
+
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/986c8074-969e-4e0c-bc35-7d964c9e4d65" />
 
 
-
-### Generated the ngspice
+### simulation
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/4765a203-6546-47a9-a47b-4673ad922c3e" />
 
 

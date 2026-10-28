@@ -72,6 +72,8 @@ The testbench was configured for transient analysis to observe the relationship 
 ###  Opening Magic VLSI
 
 Magic VLSI was opened in the Linux virtual machine with the SKY130A technology configuration. The tool was used to inspect and work with the physical layout of the CMOS inverter.
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/c42683e9-edee-471a-826b-092f9c3052f9" />
+
 
 ### CMOS Inverter Layout
 

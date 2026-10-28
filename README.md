@@ -59,9 +59,10 @@ The testbench was configured for transient analysis to observe the relationship 
 
 
 ### Generated the ngspice
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/4765a203-6546-47a9-a47b-4673ad922c3e" />
 
 
-### Physical Layout Design Using Magic VLSI
+
 
 
 

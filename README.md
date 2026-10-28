@@ -14,13 +14,7 @@ A CMOS inverter is a basic digital circuit that produces the logical complement 
 - **SKY130A PDK** — device models and layout technology
 - **Linux virtual machine (UTM)** — development environment
 
-## Work Completed So Far
 
-- Opened and worked with the inverter schematic and its Xschem testbench.
-- Set up the SKY130A PDK paths for the Xschem environment.
-- Created/viewed a CMOS inverter layout in Magic.
-- Observed a `DRC=0` indicator in the displayed Magic window.
-- Attempted Ngspice simulation; the current setup reports netlist/model-parameter errors, so a successful waveform result is **not yet available**.
 
 ## Screenshots
 

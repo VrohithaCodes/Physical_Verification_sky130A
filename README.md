@@ -80,10 +80,12 @@ Magic VLSI was opened in the Linux virtual machine with the SKY130A technology c
 The CMOS inverter layout was created and viewed using Magic VLSI. The layout includes the PMOS and NMOS transistor regions, interconnections, and the labelled terminals required for circuit connectivity.
 
 The input (`IN`) and output (`OUT`) terminals are labelled to represent the signal connections. The power (`VDD`) and ground (`VSS`) terminals provide the supply connections for the inverter.
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/35c7d27d-2e0a-4e0b-9894-ffae0e9a9a21" />
 
 ###  Design Rule Check (DRC)
+checking drc and removing errors to make drc = 0
 
-The Magic VLSI window displayed `DRC=0` in the captured screenshot. This indicates the status shown in the layout window at the time of capture. The complete DRC verification procedure and its final results will be documented after validation.
+
 
 
 

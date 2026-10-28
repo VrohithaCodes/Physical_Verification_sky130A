@@ -61,6 +61,8 @@ The testbench was configured for transient analysis to observe the relationship 
 
 ### simulation
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/4765a203-6546-47a9-a47b-4673ad922c3e" />
+### waveform
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/6372546b-8c8d-4896-905f-a28dbe06ac9b" />
 
 
 

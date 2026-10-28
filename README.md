@@ -6,7 +6,7 @@ This repository documents my hands-on work on a CMOS inverter using the **SKY130
 
 A CMOS inverter is a basic digital circuit that produces the logical complement of its input. This project explores the schematic and layout stages using open-source VLSI tools.
 
-## Tools and Environment
+## Tools and Environment 
 
 - **Xschem** — schematic capture and testbench setup
 - **Ngspice** — circuit simulation (attempted; troubleshooting remains)

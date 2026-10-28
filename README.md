@@ -80,9 +80,6 @@ The Magic VLSI window displayed `DRC=0` in the captured screenshot. This indicat
 
 ## Next Steps
 
-- Resolve the Ngspice netlist and SKY130A model-parameter issues.
-- Run the transient simulation and capture the input/output waveforms.
-- Run and document the complete Magic DRC check.
 - Perform Netgen LVS and add the results after completing the comparison.
 
 

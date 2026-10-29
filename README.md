@@ -128,6 +128,7 @@ The extracted layout netlist and schematic netlist were supplied to Netgen LVS f
 
 
 
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/b098fe9c-d308-480d-918a-f636904deca9" />
 
 
 

@@ -97,8 +97,42 @@ Drc = 0
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/8b13bc29-5a13-4a43-a791-b27a9e48732e" />
 
 
-## Next Steps
+## 4. Layout Versus Schematic (LVS) Verification
 
-- Perform Netgen LVS and add the results after completing the comparison.
+### Overview
+Layout Versus Schematic (LVS) verification is used to check whether the electrical connectivity of the physical layout matches the original circuit schematic. Netgen LVS is used with the SKY130A process design kit (PDK).
+
+### Tools and Technologies
+- **Xschem** — CMOS inverter schematic design and SPICE netlist generation
+- **Magic VLSI** — Layout design and SPICE netlist extraction
+- **Netgen LVS** — Layout-to-schematic comparison
+- **SKY130A PDK** — CMOS transistor definitions and verification setup
+
+### Verification Procedure
+
+**Step 1: Generate the schematic netlist**
+
+The CMOS inverter schematic was converted into a SPICE netlist using Xschem.
+
+**Step 2: Extract the layout netlist**
+
+The physical layout was extracted using Magic to generate the corresponding SPICE netlist.
+
+**Step 3: Configure Netgen LVS**
+
+The SKY130A Netgen setup file was configured to support technology-specific circuit comparison.
+
+**Step 4: Run the LVS comparison**
+
+The extracted layout netlist and schematic netlist were supplied to Netgen LVS for comparison.
+
+
+
+
+
+
+
+**Conclusion:** The CMOS inverter layout and schematic have been prepared for LVS verification. The initial comparison exposed netlist configuration and connectivity issues that must be resolved before successful verification can be claimed.
+
 
 

@@ -93,6 +93,8 @@ Drc = 0
 
 
 
+### Extracted files
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/8b13bc29-5a13-4a43-a791-b27a9e48732e" />
 
 
 ## Next Steps

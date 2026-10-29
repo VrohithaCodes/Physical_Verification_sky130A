@@ -75,7 +75,9 @@ The CMOS inverter layout was created and viewed using Magic VLSI. The layout inc
 
 The input (`IN`) and output (`OUT`) terminals are labelled to represent the signal connections. The power (`VDD`) and ground (`VSS`) terminals provide the supply connections for the inverter.
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/38d0d815-c356-47db-9954-5b1f66b504e4" />
-### Make connections
+### Connect the inverter circute
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/b331ab3a-e0ca-48da-9592-db9b61888d49" />
+
 
 
 ###  Design Rule Check (DRC)

@@ -88,6 +88,8 @@ Drc = 0
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/9dc46a3d-46c8-4b08-bf41-c517f10fba05" />
 
 
+### Extracting the layout to lvs 
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/384c4dbb-2cee-4e0a-a5e9-f0d66496bbfb" />
 
 
 

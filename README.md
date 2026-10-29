@@ -80,8 +80,8 @@ The input (`IN`) and output (`OUT`) terminals are labelled to represent the sign
 
 
 
-###  Design Rule Check (DRC)
-checking drc and removing errors to make drc = 0
+Drc = 0
+
 
 
 
